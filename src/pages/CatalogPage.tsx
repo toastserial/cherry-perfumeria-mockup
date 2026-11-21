@@ -181,7 +181,21 @@ export function CatalogPage({ preset }: { preset?: string }) {
         <button onClick={() => setDrawer(true)}>
           Filtros {chips.length ? `(${chips.length})` : ""}
         </button>
-        <span>{results.length} resultados</span>
+        <label>
+          <span>Ordenar</span>
+          <select
+            value={filters.sort}
+            onChange={(e) => update({ sort: e.target.value })}
+            aria-label="Ordenar resultados"
+          >
+            <option value="relevancia">Relevancia</option>
+            <option value="precio-asc">Menor precio</option>
+            <option value="precio-desc">Mayor precio</option>
+            <option value="recientes">Más recientes</option>
+            <option value="alfabetico">Alfabético</option>
+          </select>
+        </label>
+        <span>{results.length}</span>
       </div>
       {chips.length > 0 && (
         <div className="active-chips">
